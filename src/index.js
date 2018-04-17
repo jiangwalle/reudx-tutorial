@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import counter from './reducers/counter';
-import Counter from './components/Counter';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(counter);
-
-ReactDOM.render(<Counter store={store} />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
