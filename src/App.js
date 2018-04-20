@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Theme from './components/Theme';
+import TodoAdd from './containers/TodoAdd';
+import VisibleTodoList from './containers/VisibleTodoList';
+import TodoFilter from './components/TodoFilter';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      'bgColor': ''
-    }
-
-    this.onColorChange = this.onColorChange.bind(this);
-  }
-
-  onColorChange(color) {
-    this.setState({'bgColor': color});
   }
 
   render() {
     return (
-      <div className="App">
-        <Header bgColor={this.state.bgColor} />
-        <Theme onColorChange={this.onColorChange} />
+      <div>
+        <TodoAdd />
+        <VisibleTodoList />
+        <TodoFilter />
       </div>
     );
   }
