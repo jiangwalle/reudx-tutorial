@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions';
+import { addTodo, fetchTodosFromServer } from '../actions';
 
 class TodoAdd extends Component {
   constructor(props) {
@@ -26,10 +26,19 @@ class TodoAdd extends Component {
         <form onSubmit={this.onSubmit}>
           <input ref={todoInput => this.todoInput = todoInput} />
           <button type="submit">添加代办事项</button>
+          <button 
+            onClick={() => this.props.dispatch(fetchTodosFromServer())}
+          >
+            {this.props.isLoading ? '正在加载中。。。' : '从服务器加载Todos'}
+          </button>
         </form>
       </div>
     )
   }
 }
 
-export default connect()(TodoAdd);
+const mapStateToProps = (state) => ({
+  isLoading: state.app.isLoading
+})
+
+export default connect(mapStateToProps)(TodoAdd);

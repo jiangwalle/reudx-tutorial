@@ -1,5 +1,7 @@
 const todos = (state = [], action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case 'ADD_TODO':
       return [
         ...state,
@@ -14,6 +16,12 @@ const todos = (state = [], action) => {
       return state.map(todo => (
         todo.id === action.id ? {...todo, completed: !todo.completed} : todo
       ));
+      break;
+    case 'FETCH_TODOS_SUCCESS':
+      return [
+        ...state,
+        ...payload
+      ];
       break;
     default:
       return state;
