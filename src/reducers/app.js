@@ -2,17 +2,15 @@ const app = (state = {}, action = {}) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'FETCH_TODOS_START':
+    case 'FETCH_TODOS_PENDING':
       return Object.assign({}, state, {
         'isLoading': true
       });
-      break;
-    case 'FETCH_TODOS_SUCCESS':
-    case 'FETCH_TODOS_ERROR':
+    case 'FETCH_TODOS_FULFILLED':
+    case 'FETCH_TODOS_REJECTED':
       return Object.assign({}, state, {
         'isLoading': false
       });
-      break;
     default:
       return state;
   }

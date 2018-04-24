@@ -24,14 +24,16 @@ export const VisibilityFilter = {
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
-export const fetchTodosFromServer = () => (dispatch, getState) => {
-  dispatch({type: 'FETCH_TODOS_START'});
-  return fetch(Todo_API)
-    .then(response => response.json())
-    .then(todos => {
-      dispatch({type: 'FETCH_TODOS_SUCCESS', payload: todos});
-    })
-    .catch(error => {
-      dispatch({type: 'FETCH_TODOS_ERROR', payload: error});
-    });
-}
+export const fetchTodosFromServer = () => ({
+  type: 'FETCH_TODOS',
+  payload: new Promise((resolve, reject) => {
+    fetch(Todo_API)
+      .then(response => {
+        if (response.ok) {
+          resolve(response.json());
+        } else {
+          reject(response.statusText);
+        }
+      })
+  })
+})

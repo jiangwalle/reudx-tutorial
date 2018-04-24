@@ -11,18 +11,15 @@ const todos = (state = [], action) => {
           completed: false
         }
       ];
-      break;
     case 'TOGGLE_TODO':
       return state.map(todo => (
         todo.id === action.id ? {...todo, completed: !todo.completed} : todo
       ));
-      break;
-    case 'FETCH_TODOS_SUCCESS':
+    case 'FETCH_TODOS_FULFILLED':
       return [
         ...state,
         ...payload
       ];
-      break;
     default:
       return state;
   }
