@@ -6,8 +6,8 @@ const app = (state = {}, action = {}) => {
       return Object.assign({}, state, {
         'isLoading': true
       });
-    case 'FETCH_TODOS_FULFILLED':
-    case 'FETCH_TODOS_REJECTED':
+    case 'FETCH_TODOS_SUCCESS':
+    case 'FETCH_TODOS_ERROR':
       return Object.assign({}, state, {
         'isLoading': false
       });

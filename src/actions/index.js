@@ -26,14 +26,5 @@ export const VisibilityFilter = {
 
 export const fetchTodosFromServer = () => ({
   type: 'FETCH_TODOS',
-  payload: new Promise((resolve, reject) => {
-    fetch(Todo_API)
-      .then(response => {
-        if (response.ok) {
-          resolve(response.json());
-        } else {
-          reject(response.statusText);
-        }
-      })
-  })
+  payload: ''
 })

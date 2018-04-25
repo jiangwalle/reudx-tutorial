@@ -15,7 +15,7 @@ const todos = (state = [], action) => {
       return state.map(todo => (
         todo.id === action.id ? {...todo, completed: !todo.completed} : todo
       ));
-    case 'FETCH_TODOS_FULFILLED':
+    case 'FETCH_TODOS_SUCCESS':
       return [
         ...state,
         ...payload
